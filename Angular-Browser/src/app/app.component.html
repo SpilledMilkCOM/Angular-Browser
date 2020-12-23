@@ -1,0 +1,22 @@
+<mat-toolbar fxLayout="row" #toolbarId style="height: 2.5em;">
+
+  <div fxFlex="auto">
+    <button mat-button [routerLink]="['/home']"><strong>{{title}}</strong></button>
+  </div>
+
+</mat-toolbar>
+
+<mat-form-field appearance="fill">
+  <mat-label>Message</mat-label>
+  <input #textInputId matInput [value]="textInput" (keypress)="onKeyPress($event)">
+</mat-form-field>
+
+<br />
+<br />
+
+<mat-form-field appearance="legacy">
+  <mat-label>Tweet</mat-label>
+  <input matInput [value]="tweet" [readonly]="true">
+</mat-form-field>
+
+<router-outlet></router-outlet>

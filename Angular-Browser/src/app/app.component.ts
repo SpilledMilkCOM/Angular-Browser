@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,19 +6,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @Input() textInput: string = "";
-
-  // Events that the parent is listening to.
-  @Output() textInputChanged = new EventEmitter<string>();
-
+  mapped = '';
+  message = '';
   title = 'Angular-Browser';
-  tweet = "";
 
-  public onKeyPress(event: any) {
-    //var value = event.target.value;
-    var value = this.textInput;
+  public onKeyUp(event: any) {
+    // This needs to be "key up" otherwise the value of target will be the one BEFORE versus what it is AFTER the key is pressed.
 
-    this.tweet = value;
-    this.textInputChanged.emit(value);
+    var value = event.target.value;
+
+    this.mapped = value;
   }
 }

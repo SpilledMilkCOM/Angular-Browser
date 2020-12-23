@@ -6,17 +6,26 @@
 
 </mat-toolbar>
 
+<br />
+<br />
+
+<!--
+    Why isn't this being updated?
+    What happened to INTERPOLATION?
+-->
+<div>{{message}}</div>
+
 <mat-form-field appearance="fill">
-  <mat-label>Message</mat-label>
-  <input #textInputId matInput [value]="textInput" (keypress)="onKeyPress($event)">
+  <mat-label>Enter Message</mat-label>
+  <input matInput [value]="message" (keyup)="onKeyUp($event)">
 </mat-form-field>
 
 <br />
 <br />
 
 <mat-form-field appearance="legacy">
-  <mat-label>Tweet</mat-label>
-  <input matInput [value]="tweet" [readonly]="true">
+  <mat-label>Mapped Message</mat-label>
+  <input matInput [value]="mapped" [readonly]="true">
 </mat-form-field>
 
 <router-outlet></router-outlet>

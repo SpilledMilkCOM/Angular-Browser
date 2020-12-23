@@ -7,6 +7,12 @@
 </mat-toolbar>
 
 <br />
+<mat-grid-list cols="3">
+  <mat-grid-tile>
+    <mat-checkbox #mapShoutId checked="{{mapShout}}" (click)="clickShout(mapShoutId.checked)">Shout</mat-checkbox>
+  </mat-grid-tile>
+
+</mat-grid-list>
 <br />
 
 <!--

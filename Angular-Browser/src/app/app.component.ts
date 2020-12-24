@@ -1,12 +1,13 @@
 import { AfterViewInit, Component } from '@angular/core';
 
-import { MapperService } from 'src/app-mappers/app-mapper-service'
+import { MultiMapperService } from 'src/app-mappers/app-multi-mapper-service'
+import { ShoutMapperService } from 'src/app-mappers/app-shout-mapper-service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [MapperService]
+  providers: [MultiMapperService, ShoutMapperService]
 })
 export class AppComponent implements AfterViewInit {
 
@@ -20,12 +21,19 @@ export class AppComponent implements AfterViewInit {
   public title = 'Angular-Browser';
 
   constructor(
-    private mapper: MapperService
+    private mapper: MultiMapperService,
+    private shoutMapper: ShoutMapperService
   ) {
+
+    // Set up the multi-mapper here.
+    // TODO: Inject all of the mappers into the MultiMapperService (but IS it a component?)
+
+    this.mapper.add("shout", shoutMapper);
+
   }
 
   public clickCompress(checked: boolean) {
-    // Seems like there is only SOME binding to the variable.  Make sure it's set here.
+    // This member is not getting set in this class, so it needs to be set here.
 
     this.mapCompress = checked;
 
@@ -33,15 +41,15 @@ export class AppComponent implements AfterViewInit {
   }
 
   public clickLeet(checked: boolean) {
-    // Seems like there is only SOME binding to the variable.  Make sure it's set here.
+    // This member is not getting set in this class, so it needs to be set here.
 
-    this.mapShout = checked;
+    this.mapLeet = checked;
 
     this.mapMessage(this.message);
   }
 
   public clickShout(checked: boolean) {
-    // Seems like there is only SOME binding to the variable.  Make sure it's set here.
+    // This member is not getting set in this class, so it needs to be set here.
 
     this.mapShout = checked;
 
@@ -58,8 +66,6 @@ export class AppComponent implements AfterViewInit {
       value = this.mapper.map(value);
     }
 
-    console.log('mapShout = ' + this.mapShout);
-
     this.mapped = value;
   }
 
@@ -67,6 +73,9 @@ export class AppComponent implements AfterViewInit {
   }
 
   public onKeyUp(event: any) {
+
+    // This member is not getting set in this class, so it needs to be set here.
+
     this.message = event.target.value;
 
     // This needs to be "key up" otherwise the value of target will be the one BEFORE versus what it is AFTER the key is pressed.

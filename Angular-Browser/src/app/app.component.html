@@ -7,12 +7,23 @@
 </mat-toolbar>
 
 <br />
-<mat-grid-list cols="3">
-  <mat-grid-tile>
-    <mat-checkbox #mapShoutId checked="{{mapShout}}" (click)="clickShout(mapShoutId.checked)">Shout</mat-checkbox>
-  </mat-grid-tile>
 
-</mat-grid-list>
+<mat-toolbar fxLayout="row" #toolbarId style="height: 2.5em;">
+
+  <div fxFlex="auto" style="margin-right: 1em;">
+    <mat-checkbox #mapShoutId [checked]="mapShout" (change)="clickShout(mapShoutId.checked)">Shout</mat-checkbox>
+  </div>
+
+  <div fxFlex="auto" style="margin-right: 1em;">
+    <mat-checkbox #mapCompressId [checked]="mapCompress" (change)="clickCompress(mapCompressId.checked)">Compress</mat-checkbox>
+  </div>
+
+  <div fxFlex="auto" style="margin-right: 1em;">
+    <mat-checkbox #mapLeetId [checked]="mapLeet" (change)="clickLeet(mapLeetId.checked)">1337 Speak</mat-checkbox>
+  </div>
+
+</mat-toolbar>
+
 <br />
 
 <!--

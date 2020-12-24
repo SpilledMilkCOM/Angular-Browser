@@ -1,6 +1,8 @@
 # Angular-Browser
 
-Reskin image thumb pages into a more comic book output.
+Maps text to mapped text based on different types of mappings.  Converts normal English into "cool" tweetable text.
+
+TODO: Reskin image thumb pages into a more comic book output.
 
 ## Angular From Scratch
 

@@ -11,15 +11,19 @@
 <mat-toolbar fxLayout="row" #toolbarId style="height: 2.5em;">
 
   <div fxFlex="auto" style="margin-right: 1em;">
-    <mat-checkbox #mapShoutId [checked]="mapShout" (change)="clickShout(mapShoutId.checked)">SHOUT</mat-checkbox>
+    <mat-checkbox #mapLeetId [checked]="mapLeet" (change)="clickLeet(mapLeetId.checked)">1337 Speak</mat-checkbox>
   </div>
 
   <div fxFlex="auto" style="margin-right: 1em;">
     <mat-checkbox #mapCompressId [checked]="mapCompress" (change)="clickCompress(mapCompressId.checked)">Compress</mat-checkbox>
   </div>
-
+  
   <div fxFlex="auto" style="margin-right: 1em;">
-    <mat-checkbox #mapLeetId [checked]="mapLeet" (change)="clickLeet(mapLeetId.checked)">1337 Speak</mat-checkbox>
+    <mat-checkbox #mapShoutId [checked]="mapShout" (change)="clickShout(mapShoutId.checked)">SHOUT</mat-checkbox>
+  </div>
+  
+  <div fxFlex="auto" style="margin-right: 1em;">
+    <mat-checkbox #mapVowelsId [checked]="mapVowels" (change)="clickShout(mapVowelsId.checked)">Vwls</mat-checkbox>
   </div>
 
 </mat-toolbar>

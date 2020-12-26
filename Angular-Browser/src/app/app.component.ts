@@ -1,14 +1,16 @@
 import { AfterViewInit, Component } from '@angular/core';
 
+import { CompressMapperService } from 'src/app-mappers/app-compress-mapper-service';
+import { MapperItem } from 'src/app-mappers/app-mapper-item';
 import { MultiMapperService } from 'src/app-mappers/app-multi-mapper-service';
 import { ShoutMapperService } from 'src/app-mappers/app-shout-mapper-service';
-import { MapperItem } from 'src/app-mappers/app-mapper-item';
+import { VowelMapperService } from 'src/app-mappers/app-vowel-mapper-service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [MultiMapperService, ShoutMapperService]
+  providers: [CompressMapperService, MultiMapperService, ShoutMapperService, VowelMapperService]
 })
 export class AppComponent implements AfterViewInit {
 
@@ -21,22 +23,31 @@ export class AppComponent implements AfterViewInit {
   public message = 'init default';
   public title = 'Angular-Browser';
 
+  private COMPRESS_KEY = 'compress';
+  private SHOUT_KEY = 'shout';
+  private VOWELS_KEY = 'vowels';
+
   constructor(
     private mapper: MultiMapperService,
-    private shoutMapper: ShoutMapperService
+    private compressMapper: CompressMapperService,
+    private shoutMapper: ShoutMapperService,
+    private vowelsMapper: VowelMapperService
   ) {
 
     // Set up the multi-mapper here.
     // TODO: Inject all of the mappers into the MultiMapperService (but IS it a component?)
 
-    this.mapper.add("shout", new MapperItem(shoutMapper) );
-
+    this.mapper.add(this.COMPRESS_KEY, new MapperItem(compressMapper) );
+    this.mapper.add(this.SHOUT_KEY, new MapperItem(shoutMapper) );
+    this.mapper.add(this.VOWELS_KEY, new MapperItem(vowelsMapper) );
   }
 
   public clickCompress(checked: boolean) {
     // This member is not getting set in this class, so it needs to be set here.
 
     this.mapCompress = checked;
+
+    this.mapper.enable(this.COMPRESS_KEY, checked);
 
     this.mapMessage(this.message);
   }
@@ -54,7 +65,17 @@ export class AppComponent implements AfterViewInit {
 
     this.mapShout = checked;
 
-    this.mapper.enable("shout", checked);
+    this.mapper.enable(this.SHOUT_KEY, checked);
+
+    this.mapMessage(this.message);
+  }
+  
+  public clickVowels(checked: boolean) {
+    // This member is not getting set in this class, so it needs to be set here.
+
+    this.mapVowels = checked;
+
+    this.mapper.enable(this.VOWELS_KEY, checked);
 
     this.mapMessage(this.message);
   }

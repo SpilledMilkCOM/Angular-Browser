@@ -10,12 +10,13 @@ export class MultiMapperService implements IMapper {
     }
 
     public enable(key: string, enabled: boolean) {
-        if (this.mappers != null && this.mappers.has(key)) {
+        if (this.mappers != null) {
 
-            // The linter is saying I might get an "undefined" object from the map. (I don't THINK so.  It's very annoying.)
-            // TODO: Get a different linter?  Add a directive to ignore this?
+            var item = this.mappers.get(key);
 
-            this.mappers.get(key).enabled = enabled;
+            if (item != null) {
+                item.enabled = enabled;
+            }
         }
     }
 

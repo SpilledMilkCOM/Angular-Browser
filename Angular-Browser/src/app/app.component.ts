@@ -1,7 +1,8 @@
 import { AfterViewInit, Component } from '@angular/core';
 
-import { MultiMapperService } from 'src/app-mappers/app-multi-mapper-service'
-import { ShoutMapperService } from 'src/app-mappers/app-shout-mapper-service'
+import { MultiMapperService } from 'src/app-mappers/app-multi-mapper-service';
+import { ShoutMapperService } from 'src/app-mappers/app-shout-mapper-service';
+import { MapperItem } from 'src/app-mappers/app-mapper-item';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,7 @@ export class AppComponent implements AfterViewInit {
     // Set up the multi-mapper here.
     // TODO: Inject all of the mappers into the MultiMapperService (but IS it a component?)
 
-    this.mapper.add("shout", shoutMapper);
+    this.mapper.add("shout", new MapperItem(shoutMapper) );
 
   }
 
@@ -52,6 +53,8 @@ export class AppComponent implements AfterViewInit {
     // This member is not getting set in this class, so it needs to be set here.
 
     this.mapShout = checked;
+
+    this.mapper.enable("shout", checked);
 
     this.mapMessage(this.message);
   }

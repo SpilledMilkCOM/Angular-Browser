@@ -2,7 +2,16 @@
 
 Maps text to mapped text based on different types of mappings.  Converts normal English into "cool" tweetable text.
 
-TODO: Reskin image thumb pages into a more comic book output.
+* Multi-Map (controls all of the mappers)
+* SHOUT (all caps)
+* Vwls (removes vowels)
+
+## TODO
+
+* Compress (token mapping to abbreviations)
+* Chaos Monkey (random errors)
+* Chaos Turtle (random slowness)
+* Reskin image thumb pages into a more comic book output.
 
 ## Angular From Scratch
 
